@@ -31,8 +31,14 @@ public class GetInputIDTest {
         assertEquals(0,result);
     }
 
-//    @Test
-//    public void GetCorrectValue() {
-//
-//    }
+    @Test
+    public void GetCorrectValue() {
+        Response expected = new Response(1,7,
+                "officia delectus consequatur vero aut veniam explicabo molestias",
+                "https://via.placeholder.com/600/b0f7cc",
+                "https://via.placeholder.com/150/b0f7cc");
+        GetInputID getInputID = new GetInputID(new String[]{"7"});
+        Response result = getInputID.getResponse();
+        assertEquals(1,result.getAlbumId());
+    }
 }

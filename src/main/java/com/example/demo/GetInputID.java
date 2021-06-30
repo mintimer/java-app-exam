@@ -1,6 +1,14 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+
+@Component
 public class GetInputID {
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     private static String[] args;
 
@@ -29,5 +37,9 @@ public class GetInputID {
         return 0;
     }
 
-
+    public Response getResponse() {
+        int id = this.getInput();
+        System.out.println(id);
+        return restTemplate.getForObject("https://jsonplaceholder.typicode.com/photos/" + id,Response.class);
+    }
 }
