@@ -9,10 +9,10 @@ public class GetInputID {
     }
 
     public boolean validateInput() {
-        if (args.length==1){
+        if (args.length == 1) {
             try {
                 Integer.parseInt(args[0]);
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 return false;
             }
             return true;
@@ -21,6 +21,13 @@ public class GetInputID {
     }
 
     public int getInput() {
-        return Integer.parseInt(args[0]);
+        if (validateInput()) {
+            int id = Integer.parseInt(args[0]);
+            if (id > 0 && id < 250)
+                return id;
+        }
+        return 0;
     }
+
+
 }

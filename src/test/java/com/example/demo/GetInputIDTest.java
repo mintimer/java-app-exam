@@ -17,9 +17,22 @@ public class GetInputIDTest {
         assertFalse(getInputID.validateInput());
     }
 
-    @Test void GetCorrectNumber() {
+    @Test
+    public void GetCorrectNumber() {
         GetInputID getInputID = new GetInputID(new String[]{"7"});
         int result = getInputID.getInput();
         assertEquals(7,result);
     }
+
+    @Test
+    public void InputOutBound() {
+        GetInputID getInputID = new GetInputID(new String[]{"250"});
+        int result = getInputID.getInput();
+        assertEquals(0,result);
+    }
+
+//    @Test
+//    public void GetCorrectValue() {
+//
+//    }
 }
