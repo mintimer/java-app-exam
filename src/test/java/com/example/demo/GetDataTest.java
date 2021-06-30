@@ -9,4 +9,9 @@ public class GetDataTest {
     public void HaveOneArgs() {
         assertTrue(GetData.ValidateInput(new String[]{"5"}));
     }
+
+    @Test
+    public void IsNotNumberInput() {
+        assertFalse(GetData.ValidateInput(new String[]{"a"}));
+    }
 }
