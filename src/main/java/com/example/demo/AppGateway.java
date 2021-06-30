@@ -4,19 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.sql.ResultSet;
+
 @Component
-public class GetInputID {
+public class AppGateway {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    private static String[] args;
-
-    public GetInputID(String[] args) {
-        GetInputID.args = args;
-    }
-
-    public boolean validateInput() {
+    public boolean validateInput(String[] args) {
         if (args.length == 1) {
             try {
                 Integer.parseInt(args[0]);
@@ -28,8 +24,8 @@ public class GetInputID {
         return false;
     }
 
-    public int getInput() {
-        if (validateInput()) {
+    public int getInput(String[] args) {
+        if (validateInput(args)) {
             int id = Integer.parseInt(args[0]);
             if (id > 0 && id < 250)
                 return id;
@@ -37,9 +33,12 @@ public class GetInputID {
         return 0;
     }
 
-    public Response getResponse() {
-        int id = this.getInput();
-        System.out.println(id);
-        return restTemplate.getForObject("https://jsonplaceholder.typicode.com/photos/" + id,Response.class);
+    public ResponseItem getResponseItem(String[] args) {
+        int id = getInput(args);
+        return restTemplate.getForObject("https://jsonplaceholder.typicode.com/photos/" + id, ResponseItem.class);
+    }
+
+    public Response getResponse(){
+        return restTemplate.getForObject("https://jsonplaceholder.typicode.com/photos",Response.class);
     }
 }
