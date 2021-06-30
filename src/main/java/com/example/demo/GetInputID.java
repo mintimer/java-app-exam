@@ -1,11 +1,11 @@
 package com.example.demo;
 
-public class GetData {
+public class GetInputID {
 
     private static String[] args;
 
-    public GetData(String[] args) {
-        GetData.args = args;
+    public GetInputID(String[] args) {
+        GetInputID.args = args;
     }
 
     public boolean validateInput() {
