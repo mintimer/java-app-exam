@@ -19,4 +19,8 @@ public class GetData {
         }
         return false;
     }
+
+    public int getInput() {
+        return Integer.parseInt(args[0]);
+    }
 }

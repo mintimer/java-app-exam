@@ -17,4 +17,9 @@ public class GetDataTest {
         assertFalse(getData.validateInput());
     }
 
+    @Test void GetCorrectNumber() {
+        GetData getData = new GetData(new String[]{"7"});
+        int result = getData.getInput();
+        assertEquals(7,result);
+    }
 }
