@@ -7,11 +7,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GetDataTest {
     @Test
     public void HaveOneArgs() {
-        assertTrue(GetData.ValidateInput(new String[]{"5"}));
+        GetData getData = new GetData(new String[]{"5"});
+        assertTrue(getData.validateInput());
     }
 
     @Test
     public void IsNotNumberInput() {
-        assertFalse(GetData.ValidateInput(new String[]{"a"}));
+        GetData getData = new GetData(new String[]{"a"});
+        assertFalse(getData.validateInput());
     }
+
 }

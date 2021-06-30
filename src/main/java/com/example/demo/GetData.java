@@ -1,11 +1,17 @@
 package com.example.demo;
 
 public class GetData {
-    public static boolean ValidateInput(String[] args) {
+
+    private static String[] args;
+
+    public GetData(String[] args) {
+        GetData.args = args;
+    }
+
+    public boolean validateInput() {
         if (args.length==1){
-            int input = 0;
             try {
-                input = Integer.parseInt(args[0]);
+                Integer.parseInt(args[0]);
             }catch (NumberFormatException e){
                 return false;
             }
